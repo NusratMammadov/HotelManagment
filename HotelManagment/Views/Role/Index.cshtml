@@ -1,0 +1,55 @@
+﻿@model List<Role>
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<div class="page">
+    <div id="room">
+
+        <div class="header">
+            <div class="row">
+                <div class="col-9">
+                    <h1><i class="fas fa-hotel"></i>Otaqların Siyahısı</h1>
+                </div>
+                <div class="col-3 text-right">
+                    <a href="@Url.Action("create","role")" class="btn btn-success">Yeni Vezife Elavə ET</a>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="room-list">
+            <table class="table table-hover">
+                <thead>
+                    <tr style="background-color:black">
+                        <th>Vezifenin adi</th>
+                        <th>Action</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+                            <td>
+                                @item.RoleName
+                            </td>
+
+                            <td>
+                                <a onclick="return confirm('Are you sure to delete Room No: @item.RoleName?')" href="@Url.Action("delete", new { id=item.Id})" class="btn btn-danger">Sil</a>
+                                <button type="button" class="btn btn-status active">Active</button>
+                            </td>
+                        </tr>
+                    }
+
+
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

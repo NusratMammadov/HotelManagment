@@ -1,0 +1,43 @@
+﻿@model Role
+@{
+    ViewBag.Title = "Create";
+}
+
+
+
+<div class="page">
+    <div id="room">
+
+        <div class="header">
+            <div class="row">
+                <div class="col-9">
+                    <h1><i class="fas fa-hotel"></i>YENİ VEZIFE</h1>
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <div class="create">
+            <form method="post" enctype="multipart/form-data" id="create-product">
+                <div class="form-row">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.RoleName)
+                        @Html.TextBoxFor(m => m.RoleName, null, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.RoleName, "", new { @class = "text-danger" })
+
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-success" style="margin-top:27px">Yarat</button>
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+</div>

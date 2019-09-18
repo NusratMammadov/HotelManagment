@@ -1,0 +1,83 @@
+﻿@model Room
+@{
+    ViewBag.Title = "Edit";
+}
+
+
+
+<div class="page">
+    <div id="room">
+
+        <div class="header">
+            <div class="row">
+                <div class="col-9">
+                    <h1><i class="fas fa-hotel"></i>OTAQ YENILENMESI</h1>
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <div class="create">
+            <form method="post" enctype="multipart/form-data" id="create-product">
+                <input type="hidden" name="Id" value="@Model.Id" />
+                <input type="hidden" name="Photo" value="@Model.Photo" />
+                <div class="form-row">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.RoomNo)
+                        @Html.TextBoxFor(m => m.RoomNo, null, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.RoomNo, "", new { @class = "text-danger" })
+
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.DailyPrice)
+                        @Html.TextBoxFor(m => m.DailyPrice, null, new { @class = "form-control", @type = "number" })
+                        @Html.ValidationMessageFor(m => m.DailyPrice, "", new { @class = "text-danger" })
+
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.ChildCapacity)
+                        @Html.TextBoxFor(m => m.ChildCapacity, null, new { @class = "form-control", @type = "number" })
+                        @Html.ValidationMessageFor(m => m.ChildCapacity, "", new { @class = "text-danger" })
+
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.PersonCapacity)
+                        @Html.TextBoxFor(m => m.PersonCapacity, null, new { @class = "form-control", @type = "number" })
+                        @Html.ValidationMessageFor(m => m.PersonCapacity, "", new { @class = "text-danger" })
+
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.BedTypeId)
+                        @Html.DropDownListFor(m => m.BedTypeId, new SelectList(ViewBag.BedTypes, "Id", "Type"), new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.BedTypeId, "", new { @class = "text-danger" })
+
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.File)
+                        @Html.TextBoxFor(m => m.File, null, new { @class = "form-control", @type = "file" })
+                        @Html.ValidationMessageFor(m => m.File, "", new { @class = "text-danger" })
+
+                    </div>
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Desc)
+                        @Html.TextAreaFor(m => m.Desc, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Desc, "", new { @class = "text-danger" })
+
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-success">Edit</button>
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+</div>

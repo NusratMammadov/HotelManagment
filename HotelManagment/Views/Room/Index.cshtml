@@ -1,0 +1,138 @@
+﻿@model HotelManagment.VwModel.RoomIndex
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+
+<div class="page">
+    <div id="room">
+
+        <div class="header">
+            <div class="row">
+                <div class="col-9">
+                    <h1><i class="fas fa-hotel"></i>Otaqların Siyahısı</h1>
+                </div>
+                <div class="col-3 text-right">
+                    <a href="@Url.Action("create","room")" class="btn btn-success">Yeni Otaq Elavə ET</a>
+                </div>
+                @*<div class="maintable">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Nomresi</th>
+                        <th>Qiymeti</th>
+                        <th>Yetiskin sayi</th>
+                        <th>Usaq sayi</th>
+                        <th>Yataq Novu</th>
+                        <th>Description</th>
+                        <th>Sekli</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Rooms)
+                    {
+                        <tr class="parentrow">
+                            <td>
+                                @item.RoomNo
+                            </td>
+                            <td>@item.DailyPrice.ToString("0.00")</td>
+                            <td>@item.PersonCapacity</td>
+                            <td>@item.ChildCapacity</td>
+                            <td>@item.BedType.Type</td>
+                            <td>@item.Desc</td>
+
+                            <td>
+                                <img src="~/Uploads/@item.Photo" height="200" />
+
+                            </td>
+                            <td>
+                                <a href="@Url.Action("edit",new {id=item.Id })" class="btn btn-sm btn-info">Yenile</a>
+                                <a onclick="return confirm ('Are you sure ?')" href="@Url.Action("delete",new {id=item.Id })" class="btn btn-sm btn-danger">Sil</a>
+                                <a data-active="@item.Id" class="btn btn-sm btn-info activate">Aktiv</a>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+        </div>*@
+                <div class="room-list  maintable">
+                    <table class="table table-hover">
+                        
+                    </table>
+                </div>
+                <div class="form-group">
+                    <label class="info">Yatq Novune gore Axtar</label>
+                    @Html.DropDownListFor(m => m.bedTypes, new SelectList(Model.bedTypes, "Id", "Type"), new { @class = "form-control bedtype" })
+
+                </div>
+            </div>
+        </div>
+
+        <div class="room-list">
+            <table class="table table-hover">
+                <thead>
+                    <tr style="background-color:black">
+                        <th>Foto</th>
+                        <th>Açıqlama</th>
+                        <th>Nomresi</th>
+                        <th>Yetişkin sayı</th>
+                        <th>Uşaq sayi</th>
+                        <th>Yataq Növu</th>
+                        <th>Qiyməti</th>
+                        <th>Action</th> 
+                                              
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Rooms)
+                    {
+                        <tr>
+                            <td>
+                                <div class="photo">
+                                    <img src="~/Uploads/@item.Photo" alt="">
+                                </div>
+                            </td>
+                            <td>
+                                @item.Desc
+                            </td>
+                            <td>
+                                <h6>@item.RoomNo</h6>
+                            </td>
+                            <td>
+                                <h6>@item.PersonCapacity</h6>
+                            </td>
+                            <td>
+                                <h6>@item.ChildCapacity</h6>
+                            </td>
+                            <td>
+                                <h6>@item.BedType.Type</h6>
+                            </td>
+                            <td>
+                                <h6 class="price p-1" style="border-radius:5px">@item.DailyPrice.ToString("#.##") &#8380</h6>
+                            </td>
+                            <td>
+                                <a href="@Url.Action("edit", new { id=item.Id})" class="btn btn-primary mb-1" style="width:90px;">Yenile</a>
+                                <a onclick="return confirm('Are you sure to delete Room No: @item.RoomNo?')" href="@Url.Action("delete", new { id=item.Id})" class="btn btn-danger">Sil</a>
+                                <button type="button" class="btn btn-status active">Active</button>
+                            </td>
+                        </tr>
+                    }
+
+
+
+
+                </tbody>
+            </table>
+        </div>
+
+
+
+    </div>
+</div>
+

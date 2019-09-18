@@ -1,0 +1,50 @@
+﻿@*@model List<Booking>
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="my-2">
+            <a href="@Url.Action("create")" class="btn btn-light">Elave Et</a>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Musterinin Adi ve Soyadi</th>
+                    <th>Baslanqic tarixi</th>
+                    <th>Bitme tarixi</th>
+                    <th>Otaq Nomresi</th>
+                    <th>Odenilecek Mebleg (&#8380)</th>
+                    <th>Sifarisi goturenin Adi</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Customer.Name @item.Customer.Surname</td>
+
+                        <td>@item.StartDate.ToString("dd.MM.yyyy")</td>
+                        <td>@item.EndDate.Date.ToString("dd.MM.yyyy")</td>
+                        <td>@item.Room.RoomNo</td>
+                        <td>@item.Price.ToString("#.##")</td>
+                        <td>@item.ApplicationUser.Name @item.ApplicationUser.Surname</td>
+
+
+
+                        <td>
+                            <a href="@Url.Action("edit",new {id=item.Id })" class="btn btn-sm btn-info">Yenile</a>
+                            <a onclick="return confirm ('Are you sure ?')" href="@Url.Action("delete",new {id=item.Id })" class="btn btn-sm btn-danger">Sil</a>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+    </div>
+
+</div>*@
+
+

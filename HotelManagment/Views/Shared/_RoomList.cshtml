@@ -1,0 +1,70 @@
+﻿@model List<Room>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div class="row">
+    <div class="col-lg-12">
+
+        <div class="room-list">
+            <table class="table table-hover">
+                <thead>
+                    <tr style="background-color:black">
+                        <th>Foto</th>
+                        <th>Açıqlama</th>
+                        <th>Nomresi</th>
+                        <th>Yetişkin sayı</th>
+                        <th>Uşaq sayi</th>
+                        <th>Yataq Növu</th>
+                        <th>Qiyməti</th>
+                        <th>Action</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <div class="photo">
+                                    <img src="~/Uploads/@item.Photo" alt="">
+                                </div>
+                            </td>
+                            <td>
+                                @item.Desc
+                            </td>
+                            <td>
+                                <h6>@item.RoomNo</h6>
+                            </td>
+                            <td>
+                                <h6>@item.PersonCapacity</h6>
+                            </td>
+                            <td>
+                                <h6>@item.ChildCapacity</h6>
+                            </td>
+                            <td>
+                                <h6>@item.BedType.Type</h6>
+                            </td>
+                            <td>
+                                <h6 class="price p-1" style="border-radius:5px">@item.DailyPrice.ToString("#.##") &#8380</h6>
+                            </td>
+                            <td>
+                                <a href="@Url.Action("edit", new { id=item.Id})" class="btn btn-primary mb-1" style="width:90px;">Yenile</a>
+                                <a onclick="return confirm('Are you sure to delete Room No: @item.RoomNo?')" href="@Url.Action("delete", new { id=item.Id})" class="btn btn-danger">Sil</a>
+                                <button type="button" class="btn btn-status active">Active</button>
+                            </td>
+                        </tr>
+                    }
+
+
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+

@@ -1,0 +1,76 @@
+﻿@model List<ApplicationUser>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+
+
+<div class="page">
+    <div id="customer">
+
+        <div class="header">
+            <div class="row">
+                <div class="col-9">
+                    <h1><i class="fas fa-user"></i>İSTİFADƏÇİLƏRİN SİYAHISI</h1>
+                </div>
+                <div class="col-3 text-right">
+                    <a href="@Url.Action("create","applicationuser")" class="btn btn-success">Yeni İstifadəçi Yarat</a>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="customer-list">
+            <table class="table table-hover">
+                <thead>
+                    <tr style="background-color:black">
+                        <th></th>
+                        <th>Adi ve Soyadi</th>
+                        <th>Yasi</th>
+                        <th>Email</th>
+                        <th>Vezifesi</th>
+                        
+                        <th>Action</th>
+                    </tr>
+
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <div class="icon">
+                                    <img src="~/Public/assets/images/image-gallery/user.png" alt="">
+                                </div>
+                            </td>
+                            <td>
+                                <h6>@item.Name</h6>
+                            </td>
+                            <td>
+                                <h6>@item.Surname</h6>
+                            </td>
+                            <td>
+                                <h6>@item.Email</h6>
+                            </td>
+                            <td>
+                                <h6>@item.Role.RoleName</h6>
+                            </td>
+                            <td>
+                                <a href="@Url.Action("edit", new { id=item.Id})" class="btn btn-primary">Yenilə</a>
+                               
+                                <a onclick="return confirm('Are you sure to delete @item.Name?')" href="@Url.Action("delete", new { id = item.Id })" class="btn btn-danger">Sil</a>
+                               
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+</div>
